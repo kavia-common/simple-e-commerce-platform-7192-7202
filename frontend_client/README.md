@@ -1,82 +1,43 @@
-# Lightweight React Template for KAVIA
+# Frontend Client - Simple E-commerce Platform
 
-This project provides a minimal React template with a clean, modern UI and minimal dependencies.
+Modern, lightweight React app for product browsing, cart, checkout, auth, and orders.
+
+## Stack
+- React 18
+- react-router-dom v6
+- Vanilla CSS (no heavy UI framework)
+
+## Run locally
+- Copy `.env.example` to `.env` and set REACT_APP_API_BASE_URL if needed.
+  - If not set, the app uses a CRA dev proxy to `http://localhost:3001`.
+- Install dependencies: `npm install`
+- Start dev server: `npm start` (http://localhost:3000)
+
+## Environment
+- REACT_APP_API_BASE_URL: Base URL for backend. Example: `http://localhost:3001`
 
 ## Features
+- User auth: Login and Register
+- Product listing and details
+- Persistent cart sidebar
+- Checkout flow (creates an order)
+- Order history
 
-- **Lightweight**: No heavy UI frameworks - uses only vanilla CSS and React
-- **Modern UI**: Clean, responsive design with KAVIA brand styling
-- **Fast**: Minimal dependencies for quick loading times
-- **Simple**: Easy to understand and modify
+## Routes
+- `/` Home (product list + search)
+- `/product/:id` Product detail
+- `/login`, `/register` Authentication
+- `/checkout` Checkout (protected)
+- `/orders` Order history (protected)
 
-## Getting Started
+## Theming
+- Light modern theme using CSS variables in `src/App.css`
+- Colors: primary #1976D2, secondary #424242, accent #FFC107
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm test`
-
-Launches the test runner in interactive watch mode.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-## Customization
-
-### Colors
-
-The main brand colors are defined as CSS variables in `src/App.css`:
-
-```css
-:root {
-  --kavia-orange: #E87A41;
-  --kavia-dark: #1A1A1A;
-  --text-color: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.7);
-  --border-color: rgba(255, 255, 255, 0.1);
-}
-```
-
-### Components
-
-This template uses pure HTML/CSS components instead of a UI framework. You can find component styles in `src/App.css`. 
-
-Common components include:
-- Buttons (`.btn`, `.btn-large`)
-- Container (`.container`)
-- Navigation (`.navbar`)
-- Typography (`.title`, `.subtitle`, `.description`)
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Code structure
+- `src/services/api.js` API client for auth/products/cart/orders
+- `src/contexts/AuthContext.js` Auth state and actions
+- `src/contexts/CartContext.js` Cart state synced with backend
+- `src/components/*` Navbar, ProductCard, CartSidebar, ProtectedRoute
+- `src/pages/*` Home, ProductDetail, Login, Register, Checkout, Orders
+- `src/utils/format.js` Small helpers (e.g., currency formatting)
